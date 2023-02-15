@@ -1,31 +1,7 @@
 
 
 
-//  Get input field value by id using function 
-function getInputFieldValueById(inputFieldId) {
-    const inputField = document.getElementById(inputFieldId);
-    const inputFieldValueString = inputField.value;
-    const inputFieldValue = parseFloat(inputFieldValueString);
-    inputField.value = '';
-    return inputFieldValue;
-}
 
-
-// Get Element Text value by id using fuction 
-function getElementValueById(valueOfElement) {
-    const elementById = document.getElementById(valueOfElement);
-    const elementValueString = elementById.innerText;
-    const elementValue = parseFloat(elementValueString);
-    return elementValue;
-}
-
-
-// Add total value into element  by id using function
-function setTotalValueTOElement(elementById, newValue) {
-    const element = document.getElementById(elementById);
-    element.innerText = newValue;
-
-}
 
 document.getElementById('deposit-btn').addEventListener('click', function () {
 
@@ -42,5 +18,13 @@ document.getElementById('deposit-btn').addEventListener('click', function () {
     // add the total into initial deposit value 
     setTotalValueTOElement('deposit-value', totalDeposit);
 
+    // get total balance by getElementValueById 
+    const previousBalance = getElementValueById('total-balance');
+
+    // add deposit amount with previousBalance 
+    const currentBalance = previousBalance + depositFieldValue;
+
+    // set the total balance 
+    setTotalValueTOElement('total-balance', currentBalance);
 }
 )  
